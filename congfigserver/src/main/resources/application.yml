@@ -24,9 +24,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/your-org/your-config-repo.git
+          uri: https://github.com/shoyebmd424/product-store.git
           clone-on-start: true
           default-label: main
+          searchPaths: congfigserver/src/main/resources
 
   datasource:
     url: jdbc:mysql://localhost:3306/common_db
