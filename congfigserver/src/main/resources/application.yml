@@ -1,0 +1,49 @@
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework: WARN
+    com.yourcompany: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers
+  health:
+    db:
+      enabled: true
+    diskspace:
+      threshold: 10MB
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/your-org/your-config-repo.git
+          clone-on-start: true
+          default-label: main
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/common_db
+    username: shoyeb
+    password: shoyeb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: config-server
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8087/eureka/
